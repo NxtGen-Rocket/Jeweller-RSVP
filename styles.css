@@ -38,3 +38,9 @@
     gap: 10px;
     margin: 10px 0;
 }
+#whatsappButton{
+    cursor: pointer;
+}
+#whatsappButton:hover {
+    color: #000000af;
+}
