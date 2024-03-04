@@ -32,3 +32,25 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
     var whatsappLink = 'https://wa.me/' + phoneNumber;
     window.open(whatsappLink, '_blank');
 });
+
+
+function onSubmitForm(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    const formData = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        email: form.email.value,
+        phoneNumber: form.phoneNumber.value,
+        streetName: form.streetName.value,
+        city: form.city.value,
+        zipcode: form.zipcode.value,
+        date: form.date.value,
+        timestamp: form.timestamp.value
+    };
+
+    // TODO: do api integration once done
+}
+
+document.getElementById("form").addEventListener("submit", onSubmitForm);

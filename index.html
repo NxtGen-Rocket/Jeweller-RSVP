@@ -104,44 +104,41 @@
             <div class="row">
                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                   <div class="contact">
-                     <form>
+                     <form id="form">
                         <div class="row">
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="FirstName" type="text" name="FirstName">
+                              <input class="contactus" placeholder="FirstName" type="text" name="firstName" required>
                            </div>
 						   <div class="col-sm-12">
-                              <input class="contactus" placeholder="LastName" type="text" name="LastName">
+                              <input class="contactus" placeholder="LastName" type="text" name="lastName" >
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="Phone Number" type="text" name="Phone Number">
+                              <input class="contactus" placeholder="Phone Number" type="text" name="phoneNumber" pattern="\d{10}" required>
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="Email" type="text" name="Email">
+                              <input class="contactus" placeholder="Email" type="email" name="email" required>
                            </div>
-                           <!-- <div class="col-sm-12"> -->
-                              <!-- <textarea class="textarea" placeholder="Address" type="text" name="Address"></textarea> -->
-                           <!-- </div> -->
 						   <div class="col-sm-12">
-                              <input class="contactus" placeholder="StreetName" type="text" name="StreetName">
+                              <input class="contactus" placeholder="StreetName" type="text" name="streetName" required>
                            </div>
 						    <div class="col-sm-12">
-                              <input class="contactus" placeholder="City" type="text" name="City">
+                              <input class="contactus" placeholder="City" type="text" name="city" required>
                            </div>
 						   <div class="col-sm-12">
-                              <input class="contactus" placeholder="State" type="text" name="State">
+                              <input class="contactus" placeholder="State" type="text" name="state" required>
                            </div>
 						   <div class="col-sm-12">
-                           <input class="contactus" placeholder="ZipCode" type="text" name="ZipCode">
+                           <input class="contactus" placeholder="ZipCode" type="text" name="zipcode" required>
                            </div>
                            <div class="col-sm-12">
                               <b>Select Date of visit</b>
                               <div class="select-date">
                                  <div>
-                                    <input type="radio" name="date" id="sat">
+                                    <input value="9th March" type="radio" name="date" id="sat">
                                     <label for="sat">9th March (Saturday)</label>
                                  </div>
                                  <div>
-                                    <input type="radio" name="date" id="sun">
+                                    <input type="radio" value="10th March" name="date" id="sun">
                                     <label for="sun">10th March (Sunday)</label>
                                  </div>
                               </div>
