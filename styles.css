@@ -1,0 +1,40 @@
+.wrapper {
+    border: 1px solid #EEC568;
+    border-radius: 4px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    input {
+        display: none;
+    }
+    label {
+        padding: 4px 10px;
+        margin: 0;
+    }
+    input:checked + label{
+        color: #000;
+        background-color: #EEC568;
+        display: block;
+    }
+}
+.select-date{
+    margin: 10px 0;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    div {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        label {
+            margin: 0;
+        }
+    }
+}
+.timestamps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
