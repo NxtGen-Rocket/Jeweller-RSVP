@@ -33,7 +33,7 @@ function generateTimeRadios() {
 window.onload = generateTimeRadios;
 
 document.getElementById("whatsappButton").addEventListener("click", function () {
-    var phoneNumber = '+12244154678';
+    var phoneNumber = '+14075178694';
     var whatsappLink = 'https://wa.me/' + phoneNumber;
     window.open(whatsappLink, '_blank');
 });
