@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  <head>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        padding: 20px;
+        overflow-x: scroll;
+        border: 2px solid #dddddd;
+      }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        padding: 10px;
+      }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
-</head>
-<body>
+      tr:nth-child(even) {
+        background-color: #dddddd7c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JC Soni Users</h1>
 
-<h2>HTML Table</h2>
+    <table name="mytab" id="mytab1">
+      <thead id="table-head"></thead>
+      <tbody id="table-body"></tbody>
+    </table>
 
-<table name="mytab" id="mytab1">
-  <tr>
-    <th>FirstName</th>
-    <th>LastName</th>
-    <th>StreetName</th>
-    <th>City</th>
-    <th>ZipCode</th>
-    <th>Date</th>
-    <th>Time</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-</table>
-
-</body>
+    <script src="./view.js"></script>
+  </body>
 </html>
-

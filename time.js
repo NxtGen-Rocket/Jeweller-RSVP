@@ -1,7 +1,8 @@
 const submitUrl = "https://contactus-service-node.onrender.com/jcsoni/api/v1/contact-us";
-const getDataUrl = "https://contactus-service-node.onrender.com/jcsoni/api/v1/get/all";
 //const submitUrl = "http://localhost:5050/jcsoni/api/v1/contact-us";
 //const getDataUrl = "http://localhost:5050/jcsoni/api/v1/get/all";
+const submitButton = document.getElementById("submit-btn");
+const form = document.getElementById("form");
 
 function pad(number) {
     if (number == 0) return 12;
@@ -52,18 +53,18 @@ async function submitRequest(formData) {
             },
             body: JSON.stringify(formData)
         });
-
-        // fetch(submitUrl, { method: "POST", body: JSON.stringify(formData) })
-        const data = await response.json();
-        // alert("Your seat reserved successfully. Please call Meet Soni on WhatsApp for full address." +  
-        // "Note: you can find his number bottom of the page.");
-
+        if (response.status < 200 || response.status > 300)
+            throw new Error("Something went wrong")
         Swal.fire({
             title: "Reserved Successfully ",
             html: "Please call Meet Soni on WhatsApp for full address. <br> Note: you can find his number bottom of the page.",
             confirmButtonText: "<b> Ok <b>",
             confirmButtonColor: '#EEC568',
-        });
+        }).then(result => {
+            if (result.isConfirmed) {
+                form.reset();
+            }
+        })
     }
     catch (error) {
         alert("oops! Something went wrong, Please try again");
@@ -74,8 +75,8 @@ async function submitRequest(formData) {
 }
 
 function onSubmitForm(event) {
-    submitButton.disabled = true;
     event.preventDefault();
+    submitButton.disabled = true;
     const form = event.target;
     const formData = {
         firstName: form.firstName.value,
@@ -92,32 +93,4 @@ function onSubmitForm(event) {
 }
 
 
-async function getAllData() {
-    try {
-        const response = await fetch(getDataUrl, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "page": 1,
-                "limit": 100000
-            })
-        });
-        const data = await response.json();
-        console.log(".........", data.docs)
-        for (var i = 0, row; row = data.docs.length; i++) {
-        }
-    }
-    catch (error) {
-        alert("oops! Something went wrong, Please try again");
-    }
-}
-
-document.getElementById("form").addEventListener("submit", onSubmitForm);
-
-var table = document.getElementById("mytab1");
-
-
-getAllData();
+form.addEventListener("submit", onSubmitForm);
