@@ -6,10 +6,13 @@ const tableBody = document.getElementById("table-body");
 const noNeedColumn = (column) => column === "_id" || column === "createdAt" || column === "updatedAt";
 
 function fillData(users) {
-    console.log(users);
     if (users?.length > 0) {
         const columns = Object.keys(users[0]);
         const tableHeaderRow = document.createElement("tr");
+        const th = document.createElement("th");
+        th.innerText = "S.No";
+        tableHeaderRow.appendChild(th);
+
         columns.forEach(column => {
             if (!noNeedColumn(column)) {
                 const th = document.createElement("th");
@@ -18,9 +21,12 @@ function fillData(users) {
             }
         });
         tableHead.appendChild(tableHeaderRow);
-
+        let rowNumber = 1;
         users.forEach(user => {
             const row = document.createElement("tr");
+            const firstCell = document.createElement("td");
+            firstCell.innerText = rowNumber++;
+            row.appendChild(firstCell);
             columns.forEach(column => {
                 if (!noNeedColumn(column)) {
                     const cell = document.createElement("td");
