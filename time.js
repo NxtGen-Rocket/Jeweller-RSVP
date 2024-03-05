@@ -1,4 +1,5 @@
 const submitUrl = "https://contactus-service-node.onrender.com/jcsoni/api/v1/contact-us";
+//const submitUrl = "http://localhost:5050/jcsoni/api/v1/contact-us";
 
 function pad(number) {
     if (number == 0) return 12;
@@ -37,9 +38,26 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
 
 async function submitRequest(formData) {
     try {
-        const response = await fetch(submitUrl, { method: "POST", body: JSON.stringify(formData) })
+        const response = await fetch(submitUrl, {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          });
+        
+       // fetch(submitUrl, { method: "POST", body: JSON.stringify(formData) })
         const data = await response.json();
-        alert("Thankyou for registering")
+        // alert("Your seat reserved successfully. Please call Meet Soni on WhatsApp for full address." +  
+        // "Note: you can find his number bottom of the page.");
+
+        Swal.fire({
+            title: "Reserved Successfully ", 
+            html: "Please call Meet Soni on WhatsApp for full address. <br> Note: you can find his number bottom of the page.",  
+            confirmButtonText: "<b> Ok <b>",
+            confirmButtonColor: '#EEC568',
+          });
     }
     catch (error) {
         console.log(error);
@@ -62,9 +80,7 @@ function onSubmitForm(event) {
         date: form.date.value,
         time: form.timestamp.value
     };
-
     submitRequest(formData);
-
 }
 
 document.getElementById("form").addEventListener("submit", onSubmitForm);
