@@ -1,3 +1,4 @@
+const submitUrl = "https://contactus-service-node.onrender.com/jcsoni/api/v1/contact-us";
 
 function pad(number) {
     if (number == 0) return 12;
@@ -34,6 +35,18 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
 });
 
 
+async function submitRequest(formData) {
+    try {
+        const response = await fetch(submitUrl, { method: "POST", body: JSON.stringify(formData) })
+        const data = await response.json();
+        alert("Thankyou for registering")
+    }
+    catch (error) {
+        console.log(error);
+        alert("Something went wrong");
+    }
+}
+
 function onSubmitForm(event) {
     event.preventDefault();
     const form = event.target;
@@ -42,15 +55,16 @@ function onSubmitForm(event) {
         firstName: form.firstName.value,
         lastName: form.lastName.value,
         email: form.email.value,
-        phoneNumber: form.phoneNumber.value,
+        mobileNumber: Number(form.phoneNumber.value),
         streetName: form.streetName.value,
         city: form.city.value,
         zipcode: form.zipcode.value,
         date: form.date.value,
-        timestamp: form.timestamp.value
+        time: form.timestamp.value
     };
 
-    // TODO: do api integration once done
+    submitRequest(formData);
+
 }
 
 document.getElementById("form").addEventListener("submit", onSubmitForm);
