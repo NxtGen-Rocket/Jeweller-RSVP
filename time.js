@@ -35,6 +35,10 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
     window.open(whatsappLink, '_blank');
 });
 
+function toggleClassName() {
+    successModal.classList.toggle("hide");
+    successModal.classList.toggle("show");
+}
 
 async function submitRequest(formData) {
     try {
@@ -60,15 +64,17 @@ async function submitRequest(formData) {
           });
     }
     catch (error) {
-        console.log(error);
-        alert("Something went wrong");
+        alert("oops! Something went wrong, Please try again");
+    }
+    finally {
+        submitButton.disabled = false;
     }
 }
 
 function onSubmitForm(event) {
+    submitButton.disabled = true;
     event.preventDefault();
     const form = event.target;
-
     const formData = {
         firstName: form.firstName.value,
         lastName: form.lastName.value,

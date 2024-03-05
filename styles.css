@@ -44,3 +44,20 @@
 #whatsappButton:hover {
     color: #000000af;
 }
+#success-modal {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    padding: 20px;
+}
+#submit-btn:disabled {
+    background-color: gray;
+}
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
