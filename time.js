@@ -38,6 +38,7 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
     window.open(whatsappLink, '_blank');
 });
 
+
 function toggleClassName() {
     successModal.classList.toggle("hide");
     successModal.classList.toggle("show");
