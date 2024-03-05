@@ -1,4 +1,6 @@
 const submitUrl = "https://contactus-service-node.onrender.com/jcsoni/api/v1/contact-us";
+const submitButton = document.getElementById("submit-btn");
+const successModal = document.getElementById("success-modal");
 
 function pad(number) {
     if (number == 0) return 12;
@@ -34,23 +36,31 @@ document.getElementById("whatsappButton").addEventListener("click", function () 
     window.open(whatsappLink, '_blank');
 });
 
+function toggleClassName() {
+    successModal.classList.toggle("hide");
+    successModal.classList.toggle("show");
+}
 
 async function submitRequest(formData) {
     try {
         const response = await fetch(submitUrl, { method: "POST", body: JSON.stringify(formData) })
-        const data = await response.json();
-        alert("Thankyou for registering")
+        if (response.status < 200 || response.status >= 300) {
+            throw new Error("Something went wrong");
+        }
+        toggleClassName();
     }
     catch (error) {
-        console.log(error);
-        alert("Something went wrong");
+        alert("oops! Something went wrong, Please try again");
+    }
+    finally {
+        submitButton.disabled = false;
     }
 }
 
 function onSubmitForm(event) {
+    submitButton.disabled = true;
     event.preventDefault();
     const form = event.target;
-
     const formData = {
         firstName: form.firstName.value,
         lastName: form.lastName.value,

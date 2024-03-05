@@ -149,7 +149,7 @@
                               </div>
                            </div>
                            <div class="col-sm-12">
-                              <button class="send">Send</button>
+                              <button class="send" id="submit-btn">Send</button>
                            </div>
                         </div>
                      </form>
@@ -191,7 +191,16 @@
                </div>
             </div>
          </div>
-      </footer>  
+      </footer> 
+      <div id="success-modal" class="hide">
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Your seat reserved successfully. Please call Meet Soni on Whatsapp for full address.</strong>
+            <p>Note: You can find his number at the bottom of the page</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> 
+      </div>
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
